@@ -1,6 +1,6 @@
 from logging import raiseExceptions
 from enum import Enum
-from htmlnode import LeafNode
+from .htmlnode import LeafNode
 import re
 
 class TextType(Enum):
@@ -133,5 +133,6 @@ def text_to_textnodes(text:str) -> list:
     sort_link = split_nodes_link(sort_image)
     return sort_link
 
+    pass
 
 

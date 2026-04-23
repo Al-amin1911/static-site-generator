@@ -143,5 +143,6 @@ class TestTextNode(unittest.TestCase):
         TextNode(" and an ", TextType.TEXT, None), TextNode("obi wan image", TextType.IMAGE, "https://i.imgur.com/fJRm4Vk.jpeg"), TextNode(" and a ", TextType.TEXT, None),
         TextNode("link", TextType.LINK, "https://boot.dev")], text_node)
         pass
+     
 if __name__ == "__main__":
     unittest.main()
