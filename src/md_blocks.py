@@ -1,6 +1,6 @@
 from enum import Enum
-from .htmlnode import ParentNode
-from .textnode import TextNode, TextType, text_to_textnodes, textnode_to_htmlnode
+from htmlnode import ParentNode
+from textnode import TextNode, TextType, text_to_textnodes, textnode_to_htmlnode
 
 def markdown_to_blocks(markdown) -> list:
     blocks = markdown.strip().split("\n\n")

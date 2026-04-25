@@ -1,6 +1,6 @@
 from logging import raiseExceptions
 from enum import Enum
-from .htmlnode import LeafNode
+from htmlnode import LeafNode
 import re
 
 class TextType(Enum):
