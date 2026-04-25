@@ -133,6 +133,6 @@ def text_to_textnodes(text:str) -> list:
     sort_link = split_nodes_link(sort_image)
     return sort_link
 
-    pass
+
 
 

@@ -39,7 +39,7 @@ def extract_title(markdown):
             return title
     except Exception as e:
         print(f"Error occured {e}")
-    pass
+
 
 def generate_page(from_path, template_path, dest_path):
     print(f"Generating page from {from_path} to {dest_path} using {template_path}")
@@ -58,7 +58,6 @@ def generate_page(from_path, template_path, dest_path):
             f.write(template)
     except Exception as e:
         print(f"Error occured :{e}")
-    pass
 
 def main():
     logging.basicConfig(filename='log_file', level=logging.INFO)
@@ -68,7 +67,6 @@ def main():
     from_path, tmp_path, dst_path = "/home/alamin/static-site-generator/content/index.md", "/home/alamin/static-site-generator/template.html", "/home/alamin/static-site-generator/public/index.html"
     generate_page(from_path, tmp_path, dst_path)
 
-    pass
 
 
 

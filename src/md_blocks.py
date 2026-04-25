@@ -52,7 +52,7 @@ def block_to_block_type(markdown_block):
                 return BlockType.PARAGRAPH
         return BlockType.OLIST
     return BlockType.PARAGRAPH  
-    pass
+
 
 
 def text_to_children(text):
@@ -62,7 +62,7 @@ def text_to_children(text):
         html_node = textnode_to_htmlnode(text_node)
         htmlnode_list.append(html_node)
     return htmlnode_list
-    pass
+ 
 
 def paragraph_to_html_node(markdown_block):
     formatted = " ".join(markdown_block.split("\n"))
@@ -139,4 +139,3 @@ def markdown_to_html_node(markdown):
             raise TypeError(f"{block} not a block type")
         parent_list.append(node)
     return ParentNode("div", parent_list)
-    pass

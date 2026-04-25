@@ -116,7 +116,7 @@ class TestTextNode(unittest.TestCase):
         TextType.TEXT,)
         new_nodes = split_nodes_image([node])
         self.assertListEqual([TextNode("This is text with an image ", TextType.TEXT, None), TextNode("image", TextType.IMAGE, "https://i.imgur.com/zjjcJKZ.png")], new_nodes)
-        pass
+
     def test_no_image_or_link(self):
         node = TextNode(
         "This is a text with no image or link",
@@ -125,7 +125,7 @@ class TestTextNode(unittest.TestCase):
         link_node = split_nodes_link([node])
         self.assertEqual([TextNode("This is a text with no image or link", TextType.TEXT, None)], image_node)
         self.assertEqual([TextNode("This is a text with no image or link", TextType.TEXT, None)], link_node)
-        pass
+
     def test_no_text(self):
         node1 = TextNode("![image](https://i.imgur.com/zjjcJKZ.png)", TextType.TEXT)
         node2 = TextNode("[to boot dev](https://www.boot.dev)", TextType.TEXT)
@@ -133,7 +133,7 @@ class TestTextNode(unittest.TestCase):
         link_node = split_nodes_link([node2])
         self.assertEqual([TextNode("image", TextType.IMAGE, "https://i.imgur.com/zjjcJKZ.png")], image_node)
         self.assertEqual([TextNode("to boot dev", TextType.LINK, "https://www.boot.dev")], link_node)
-        pass
+    
     # test text_to_textnode
     def test_text_to_textnodes(self):
         text = "This is **text** with an _italic_ word and a `code block` and an ![obi wan image](https://i.imgur.com/fJRm4Vk.jpeg) and a [link](https://boot.dev)"
@@ -142,7 +142,7 @@ class TestTextNode(unittest.TestCase):
         TextNode("italic", TextType.ITALIC, None), TextNode(" word and a ", TextType.TEXT, None), TextNode("code block", TextType.CODE, None),
         TextNode(" and an ", TextType.TEXT, None), TextNode("obi wan image", TextType.IMAGE, "https://i.imgur.com/fJRm4Vk.jpeg"), TextNode(" and a ", TextType.TEXT, None),
         TextNode("link", TextType.LINK, "https://boot.dev")], text_node)
-        pass
-     
+
+
 if __name__ == "__main__":
     unittest.main()

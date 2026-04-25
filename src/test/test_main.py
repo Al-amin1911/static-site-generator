@@ -16,7 +16,7 @@ This is a paragraph"""
 Another paragraph"""
         result = extract_title(md)
         self.assertIsNone(result)
-    pass
+
 
 if __name__ == "__main__":
     unittest.main()
