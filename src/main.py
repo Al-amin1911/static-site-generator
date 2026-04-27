@@ -1,11 +1,10 @@
 import logging
-import shutil
-from textnode import TextNode, TextType, textnode_to_htmlnode, split_nodes_delimiter, extract_markdown_images, extract_markdown_links, split_nodes_link, text_to_textnodes
-from htmlnode import HTMLNode, LeafNode, ParentNode
 from md_blocks import markdown_to_blocks, markdown_to_html_node
 import os, shutil, logging
+from dotenv import load_dotenv
 
 logger = logging.getLogger(__name__)
+load_dotenv()
 
 def copy_content(source_path:str, destination_path:str):
     # delete content of destination directory "public"
@@ -59,13 +58,34 @@ def generate_page(from_path, template_path, dest_path):
     except Exception as e:
         print(f"Error occured :{e}")
 
+def generate_pages_recursive(dir_path_content, template_path, dest_dir_path):
+    if os.path.exists(dir_path_content):
+        try:
+            for filename in os.listdir(dir_path_content):
+                content_path = os.path.join(dir_path_content, filename)
+                logger.info(content_path)
+                try:
+                    if os.path.isdir(content_path):
+                        new_dest_dir = os.path.join(dest_dir_path, filename)
+                        os.mkdir(new_dest_dir)
+                        generate_pages_recursive(content_path, template_path, new_dest_dir)
+                    elif os.path.isfile(content_path):
+                        if content_path.endswith(".md"):
+                            generate_page(content_path, template_path, dest_dir_path+"/index.html")
+                except Exception as e:
+                    print(f"Failed to generate file: {e}")
+        except Exception as e:
+            print(f"{dir_path_content} not exist: {e}")
+
+
+
 def main():
     logging.basicConfig(filename='log_file', level=logging.INFO)
-    src = '/home/alamin/static-site-generator/static'
-    dst = '/home/alamin/static-site-generator/public'
+    src = os.getenv('SOURCE_PATH')
+    dst = os.getenv("DEST_PATH")
     copy_content(src, dst)
-    from_path, tmp_path, dst_path = "/home/alamin/static-site-generator/content/index.md", "/home/alamin/static-site-generator/template.html", "/home/alamin/static-site-generator/public/index.html"
-    generate_page(from_path, tmp_path, dst_path)
+    from_path, tmp_path, dst_path = os.getenv('FROM_PATH'), os.getenv('TEMPLATE_PATH'), os.getenv('DEST_PATH')
+    generate_pages_recursive(from_path, tmp_path, dst_path)
 
 
 
