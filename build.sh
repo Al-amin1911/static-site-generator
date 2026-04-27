@@ -1,1 +1,2 @@
-python3 src/main.py "https://github.com/Al-amin1911/static-site-generator"
+python3 src/main.py "/static-site-generator/"
+touch docs/.nojekyll
