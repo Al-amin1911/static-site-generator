@@ -81,11 +81,11 @@ def generate_pages_recursive(dir_path_content, template_path, dest_dir_path, bas
 
 def main():
     logging.basicConfig(filename='log_file', level=logging.INFO)
-    src = "../static"
-    dst = "../docs"
+    src = "./static"
+    dst = "./docs"
     copy_content(src, dst)  
     basepath =  sys.argv[1] if len(sys.argv) > 1 else "/"
-    from_path, tmp_path = "../content", "../template.html"
+    from_path, tmp_path = "./content", "./template.html"
     generate_pages_recursive(from_path, tmp_path, dst, basepath)
 
 
